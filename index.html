@@ -30,15 +30,34 @@
   <div class="container">
     <div class="row">
       <div class="one-half column offset-by-three" style="margin-top: 10%">
-        <h5 style="color:#88d07c;">if you see this web page while browsing</h5>
-          <img src="assets/doot.gif" class="skeleton">
-          <h5 style="color: #FFFFFF;">you have been visited by trumpet skelton of the abyss</h5>
-          <h5 style="color: #ecea95;">good bones and calcium will come to you</h5>
-          <h5 style="color: #1117b5;">but only if you updoot mr skeltal in the next 2.7 seconds</h5>
-          <button style="margin: 0 auto; display: block;" onclick="this.firstChild.play()"><audio src="assets/skullsound2.mp3"></audio>updoot</button>
+        <img height="500px" width="750px" id="dootImg" src="assets/doot.gif" class="skeleton">
+        <br />
+        <button style="margin: 0 auto; display: block;" onclick="this.firstChild.play();changeDoot()"><audio src="assets/skullsound2.mp3"></audio>updoot</button>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+  function changeDoot()
+  {
+    var imagePath  = "assets/"
+
+    var doots = [
+    imagePath + "1.jpg", 
+    imagePath + "2.jpg",
+    imagePath + "3.jpg",
+    imagePath + "4.jpg",
+    imagePath + "5.jpg",
+    imagePath + "6.jpg",
+    imagePath + "doot.gif"
+    ];
+
+    var randDoot = doots[Math.floor(Math.random() * doots.length)];
+
+    document.getElementById("dootImg").src = randDoot;
+
+  }
+  </script>
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
