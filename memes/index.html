@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>F O R C E D M E M E S</title>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <br />
+            <div class="row">
+                <label class="radio-inline"><input type="radio" name="lines" value="two">Two Lines</label>
+                <label class="radio-inline"><input type="radio" name="lines" value="three">Three Lines</label>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <label for="givenMeme">Text</label>
+                <input type="text" name="givenMeme">
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <textarea id="memebox" rows="15" cols="50" readonly="true" class="row"> 
+                </textarea>
+            </div> 
+            
+            <br />
+            <br />
+
+            <div class="row">
+                <button type="button" class="btn btn-primary" onclick="memeify();">Create</button>
+            </div>
+        </div>
+
+        <script>
+            function memeify() {
+                var memed = "";
+                var blankSpace = " ";
+                var linebreak = "\n";
+                var givenText = document.getElementsByName("givenMeme")[0].value;
+                var lines = document.querySelector('input[name="lines"]:checked').value;
+                var blockquote = "```";
+                memed += blockquote + linebreak;
+                if(lines === "two")
+                {
+                    textArray = givenText.toUpperCase().split('');
+                    for(i = 0; i < textArray.length; i++)
+                    {
+                        memed += textArray[i] + blankSpace;
+                    }
+                    
+                    memed += linebreak;
+
+                    for(i = 1; i < textArray.length; i++)
+                    {
+                        memed += textArray[i] + linebreak;
+                    }
+                }
+                else if(lines === "three")
+                {
+                    textArray = givenText.toUpperCase().split('');
+                    for(i = 0; i < textArray.length; i++)
+                    {
+                        memed += textArray[i] + blankSpace;
+                    }
+                    
+                    memed += linebreak;
+
+                    for(i = 1; i < textArray.length; i++)
+                    {
+                        memed += textArray[i];
+                        totalSpaces = (i*2)-1;
+
+                        for(x = 1; x <= totalSpaces; x++)
+                        {
+                            memed += blankSpace;
+                            if(x == totalSpaces)
+                            {
+                                memed += textArray[i];
+                            }
+                        }
+
+                        memed += linebreak;
+                    }
+                }
+                memed += blockquote + linebreak;
+                document.getElementById("memebox").innerHTML = memed;
+            }
+        </script>
+    </body>
+</html>
